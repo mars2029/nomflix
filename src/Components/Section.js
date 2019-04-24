@@ -1,0 +1,33 @@
+import React from "react";
+import PropsType from "prop-types";
+import styled from "styled-components";
+
+const Container = styled.div`
+  :not(:last-child) {
+    margin-bottom: 50px;
+  }
+`;
+const Title = styled.span`
+  font-size: 14px;
+  font-weight: 600;
+`;
+const Grid = styled.div`
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 125px);
+  grid-gap: 15px;
+`;
+
+const Section = ({ title, children }) => (
+  <Container>
+    <Title>{title}</Title>
+    <Grid>{children}</Grid>
+  </Container>
+);
+
+Section.PropsType = {
+  title: PropsType.title,
+  children: PropsType.oneOfType([PropsType.arrayOf(PropsType.node), PropsType.node])
+};
+
+export default Section;
